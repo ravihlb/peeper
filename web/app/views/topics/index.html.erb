@@ -1,0 +1,62 @@
+<div class="hor-centered">
+  <table>
+    <tr>
+        <th>Título</th>
+        <th>Link</th>
+    </tr>
+      <% @topics.each do |t| %>
+        <tr>
+          <td><%= render t %></td>
+          <td><%= link_to "Acessar", t %></td>
+        </tr>
+      <% end %>
+  </table>
+</div>
+
+<div class="hor-centered" style="border-top:1px solid black; margin-top: 1%; border-width: 10%;">
+  <a><%= link_to "Novo tópico", new_topic_path %> <a/>
+</div>
+
+<style>
+  html {
+    font-family: sans-serif;
+  }
+
+  table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+  }
+
+  .hor-centered, a {
+    margin: auto;
+    width: 10%;
+    padding: 5%;
+  }
+
+  td, th {
+    border: 1px solid rgb(190,190,190);
+    padding: 10px 20px;
+  }
+
+  th {
+    background-color: rgb(235,235,235);
+  }
+
+  td {
+    text-align: center;
+  }
+
+  tr:nth-child(even) td {
+    background-color: rgb(250,250,250);
+  }
+
+  tr:nth-child(odd) td {
+    background-color: rgb(245,245,245);
+  }
+
+  caption {
+    padding: 10px;
+  }
+</style>
