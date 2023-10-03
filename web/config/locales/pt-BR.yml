@@ -1,8 +1,0 @@
-pt-BR:
-  activerecord:
-    errors:
-      models:
-        topic:
-          attributes:
-            titulo:
-              blank: "não pode ser vazio"
