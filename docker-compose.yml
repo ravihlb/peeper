@@ -4,7 +4,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./web:/usr/src/peeper
+      - ./api:/usr/src/peeper
       - bundle:/usr/local/bundle
     command: bundle exec rails s -b 0.0.0.0
 
