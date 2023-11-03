@@ -2,17 +2,22 @@
     import { defineComponent } from 'vue'
     import api from '../http.ts'
 
+    interface Post {
+        title: string
+        body: string
+    }
+
     export default defineComponent({
         data() {
             return {
-                posts: []
+                posts: [] as Post[]
             }
         },
 
         methods: {
             async loadPosts() {
                 const response = await api.get('/posts')
-                this.posts = response.data
+                this.posts = response.data as Post[]
             }
         },
 
