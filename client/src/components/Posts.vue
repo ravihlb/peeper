@@ -10,7 +10,9 @@
     export default defineComponent({
         data() {
             return {
-                posts: [] as Post[]
+                posts: [] as Post[],
+                title: '',
+                body: '',
             }
         },
 
@@ -18,8 +20,20 @@
             async loadPosts() {
                 const response = await api.get('/posts')
                 this.posts = response.data as Post[]
+            },
+
+            clearForm() {
+                this.title = ''
+                this.body = ''
+            },
+
+            async createPost() {
+                await api.post('/posts', { title: this.title, body: this.body })
+                this.clearForm()
+                this.loadPosts()
             }
         },
+
 
         async mounted() {
             await this.loadPosts()
@@ -29,8 +43,16 @@
 </script>
 
 <template>
-    <h1>Posts</h1>
+    New Post:
+    <div>
+        Title: <input v-model="title" />
+        <br />
+        Body: <textarea v-model="body" />
+        <br />
+        <button @click="createPost">Create Post</button>
+    </div>
 
+    <h1>Posts</h1>
     <div v-for="post in posts">
         <div>
             <h3>{{ post.title }}</h3>
