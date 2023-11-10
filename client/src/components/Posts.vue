@@ -1,68 +1,43 @@
-<script lang='ts'>
-    import { defineComponent } from 'vue'
-    import api from '../http.ts'
+<script lang="ts">
+import { defineComponent } from "vue";
+import api from "../http.ts";
 
-    interface Post {
-        title: string
-        body: string
-    }
+interface Post {
+  title: string;
+  body: string;
+}
 
-    export default defineComponent({
-        data() {
-            return {
-                posts: [] as Post[],
-                title: '',
-                body: '',
-            }
-        },
+export default defineComponent({
+  data() {
+    return {
+      posts: [] as Post[],
+    };
+  },
 
-        methods: {
-            async loadPosts() {
-                const response = await api.get('/posts')
-                this.posts = response.data as Post[]
-            },
-
-            clearForm() {
-                this.title = ''
-                this.body = ''
-            },
-
-            async createPost() {
-                await api.post('/posts', { title: this.title, body: this.body })
-                this.clearForm()
-                this.loadPosts()
-            }
-        },
-
-        async mounted() {
-            await this.loadPosts()
-        }
-})
-
+  methods: {
+    async loadPosts() {
+      const response = await api.get("/posts");
+      this.posts = response.data as Post[];
+    },
+  },
+  async mounted() {
+    await this.loadPosts();
+  },
+});
 </script>
 
 <template>
-    <!-- New Post: -->
-    <!-- <div> -->
-    <!--     Title: <input v-model="title" /> -->
-    <!--     <br /> -->
-    <!--     Body: <textarea v-model="body" /> -->
-    <!--     <br /> -->
-    <!--     <button @click="createPost">Create Post</button> -->
-    <!-- </div> -->
-
-    <div v-for="post in posts">
-            <v-card
-            class="card"
-            :text="post.body"
-            :rounded="0"
-            :min-width="500"
-            :border="10"
-            theme="dark"
-            >
-            </v-card>
-        <!-- <br> -->
-    </div>
+  <div v-for="post in posts">
+    <v-card
+      class="card"
+      :text="post.body"
+      :rounded="0"
+      :min-width="500"
+      :border="10"
+      theme="dark"
+    >
+    </v-card>
+  </div>
 </template>
 
 <style lang="sass">

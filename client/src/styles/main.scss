@@ -1,4 +1,4 @@
-@use 'vuetify/settings' with (
+@use "vuetify/settings" with (
   $card-border: 1px solid,
-  $card-border-radius: 0px,
-)
+  $card-border-radius: 0px
+);

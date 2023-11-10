@@ -6,11 +6,9 @@ import CreatePost from "./CreatePost.vue";
 <template>
   <v-layout>
     <v-navigation-drawer theme="dark" :permanent="true" :width="318">
-      <v-list-nav>
+      <v-list>
         <v-list-item v-ripple="false" rounded="pill" href="/">
-          <div class="flex place-content-center">
-            <Starling class="w-10" />
-          </div>
+          <Starling class="w-10 pl-10" />
         </v-list-item>
         <v-list-item
           v-ripple="false"
@@ -20,8 +18,8 @@ import CreatePost from "./CreatePost.vue";
           prepend-icon="mdi-home"
           title="Home"
         ></v-list-item>
-      </v-list-nav>
-      <CreatePost />
+      </v-list>
+      <CreatePost class="text-center absolute inset-x-0 bottom-10" />
     </v-navigation-drawer>
   </v-layout>
 </template>
