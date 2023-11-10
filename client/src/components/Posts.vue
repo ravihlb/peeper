@@ -34,7 +34,6 @@
             }
         },
 
-
         async mounted() {
             await this.loadPosts()
         }
@@ -43,21 +42,30 @@
 </script>
 
 <template>
-    New Post:
-    <div>
-        Title: <input v-model="title" />
-        <br />
-        Body: <textarea v-model="body" />
-        <br />
-        <button @click="createPost">Create Post</button>
-    </div>
+    <!-- New Post: -->
+    <!-- <div> -->
+    <!--     Title: <input v-model="title" /> -->
+    <!--     <br /> -->
+    <!--     Body: <textarea v-model="body" /> -->
+    <!--     <br /> -->
+    <!--     <button @click="createPost">Create Post</button> -->
+    <!-- </div> -->
 
-    <h1>Posts</h1>
     <div v-for="post in posts">
-        <div>
-            <h3>{{ post.title }}</h3>
-            <div>{{ post.body }}</div>
-        </div>
+            <v-card
+            class="card"
+            :text="post.body"
+            :rounded="0"
+            :min-width="500"
+            :border="10"
+            theme="dark"
+            >
+            </v-card>
+        <!-- <br> -->
     </div>
-
 </template>
+
+<style lang="sass">
+.class
+    border-bottom: 3px solid
+</style>
